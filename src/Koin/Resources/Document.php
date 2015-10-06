@@ -45,9 +45,7 @@ class Document
 
     public function setCPF($cpf)
     {
-        if ($this->isValidCpf($cpf)) {
-            $this->cpf = $cpf;
-        }
+        $this->cpf = $cpf;
     }
 
     public function getCPF()
