@@ -2,6 +2,7 @@
 
 namespace Koin\Resources;
 
+use Koin\Validation\ShippingValidation;
 use stdClass;
 
 class Shipping
@@ -18,6 +19,11 @@ class Shipping
     public $price;
     public $deliveryDate;
     public $shippingType;
+
+    /**
+     * @var stClass
+     */
+    public $validator;
 
     public function __construct(array $data = null)
     {
@@ -68,6 +74,8 @@ class Shipping
         if (isset($data['shippingType'])) {
             $this->setShippingType($data['shippingType']);
         }
+
+        $this->validator = new ShippingValidation();
     }
 
     /**

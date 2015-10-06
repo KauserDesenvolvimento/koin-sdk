@@ -2,6 +2,7 @@
 
 namespace Koin\Resources;
 
+use Koin\Validation\BuyerValidation;
 use stdClass;
 
 class Buyer
@@ -17,6 +18,11 @@ class Buyer
     public $birthday;
     public $phones;
     public $address;
+
+    /**
+     * @var stClass
+     */
+    public $validator;
 
     public function __construct(array $data = null)
     {
@@ -63,6 +69,8 @@ class Buyer
         if (isset($data['address'])) {
             $this->setAddress($data['address']);
         }
+
+        $this->validator = new BuyerValidation();
     }
 
     /**

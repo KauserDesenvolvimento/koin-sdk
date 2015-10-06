@@ -4,7 +4,7 @@ namespace Koin\Validation;
 
 use stdClass;
 
-class String
+class BuyerValidation
 {
 
     /**
