@@ -144,7 +144,14 @@ class Shipping
 
     public function setCity($city)
     {
-        $this->city = $city;
+        $city = $this->validator->setCity($city);
+
+        if ($city) {
+            $this->city = $city;
+        }
+
+        $this->city = '';
+        return $this;
     }
 
     public function setComplement($complement)

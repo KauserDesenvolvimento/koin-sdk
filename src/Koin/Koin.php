@@ -36,7 +36,10 @@ class Koin
 
     public function autoload($class)
     {
-        require_once dirname(dirname(__FILE__)) . '/' . str_replace('\\', '/', $class) . '.php';
+        $file = dirname(dirname(__FILE__)) . '/' . str_replace('\\', '/', $class) . '.php';
+        if (is_file($file)) {
+            require_once $file;
+        }
     }
     /**
      * Gets the value of buyer.
