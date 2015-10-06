@@ -83,9 +83,8 @@ class BuyerValidation
 
     public function setDocument($document)
     {
-        if (is_string($document)) {
-            $document = $this->helper->cutString($this->helper->removeExtraWhiteSpaces($document), 300);
-        } else {
+        $document = new \Koin\Resources\Document($document);
+        if (!$document) {
             $document = false;
         }
 
