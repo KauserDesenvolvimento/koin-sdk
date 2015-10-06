@@ -27,20 +27,8 @@ class Koin
     {
         /* date timezone used by API */
         date_default_timezone_set("UTC");
-
-        /**
-         * Autoloader, composer handles with overload
-         */
-        spl_autoload_register(array($this, 'autoload'));
     }
 
-    public function autoload($class)
-    {
-        $file = dirname(dirname(__FILE__)) . '/' . str_replace('\\', '/', $class) . '.php';
-        if (is_file($file)) {
-            require_once $file;
-        }
-    }
     /**
      * Gets the value of buyer.
      *

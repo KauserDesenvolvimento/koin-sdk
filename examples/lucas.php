@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '../../src/Koin/Koin.php';
+require_once dirname(__FILE__) . '../../vendor/autoload.php';
 
 use Koin\Koin;
 
@@ -105,5 +105,5 @@ $curl = $koin->instanceCurl(
     'production'
 );
 
-header('Content-type: application/json; chartset=utf-8');
-echo json_decode($curl->sendPost($koin->getOrder()));
+//header('Content-type: application/json; chartset=utf-8');
+//echo json_decode($curl->sendPost($koin->getOrder()));
