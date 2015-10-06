@@ -46,5 +46,5 @@ engines:
 # exclude_paths key.
 
 exclude_paths:
-- "tests/*"
-- "vendor/*"
+- tests/*
+- vendor/*
