@@ -106,4 +106,4 @@ $curl = $koin->instanceCurl(
 );
 
 header('Content-type: application/json; chartset=utf-8');
-echo $curl->sendPost($koin->getOrder());
+echo json_decode($curl->sendPost($koin->getOrder()));

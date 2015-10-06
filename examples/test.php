@@ -7,3 +7,5 @@ $test = true;
 if (1 < 2) {
     echo 'passes';
 }
+
+$var = "victor";
