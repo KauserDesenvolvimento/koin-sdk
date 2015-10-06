@@ -140,21 +140,21 @@ class Curl
 
     public function getHash()
     {
-        $this->setTime(time());
-
-        $binaryHash = hash_hmac('sha512', $this->url . $this->getTime(), $this->getSecretKey(), true);
+        $binaryHash = hash_hmac('sha512', $this->url . $this->time, $this->getSecretKey(), true);
 
         return base64_encode($binaryHash);
     }
 
     public function sendPost($order)
     {
+        $this->setTime(time());
+
         $json = json_encode($order);
 
         $headers = array(
             "Content-Type:application/json; charset=utf-8",
             "Content-Length:" . strlen($json),
-            "Authorization: " . $this->getConsumerKey() . ", " . $this->getHash() . ", " . $this->getTime(),
+            "Authorization: " . $this->getConsumerKey() . "," . $this->getHash() . "," . $this->time,
         );
 
         $ch = curl_init();

@@ -85,7 +85,7 @@ foreach ($produtos as $produto) {
 }
 $koin->setItems($items->getItems());
 
-$koin->setFraudId('82376kjsdgh');
+$koin->setFraudId('dkf348lcu20ecvf8013gfckdksmd');
 $koin->setReference('001');
 $koin->setRequestDate(date("Y-m-d H:i:s"));
 $koin->setPrice(475.60);
@@ -99,5 +99,11 @@ $config->setIncreasePercent(0);
 $config->setIncreaseValue(0);
 $koin->setConfig($config->getConfig());
 
+$curl = $koin->instanceCurl(
+    '84C2CBDB8A094706A0DF28A7CE0ED367',
+    'D2361E4D906641A0B9A8E31465C07F7A',
+    'production'
+);
+
 header('Content-type: application/json; chartset=utf-8');
-echo json_encode($koin->getOrder());
+echo $curl->sendPost($koin->getOrder());
