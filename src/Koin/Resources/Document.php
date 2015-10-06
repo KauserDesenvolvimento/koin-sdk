@@ -33,24 +33,24 @@ class Document
         }
     }
 
-    public function setRG ($rg)
+    public function setRG($rg)
     {
         $this->rg = $rg;
     }
 
-    public function getRG ()
+    public function getRG()
     {
         return $this->rg;
     }
 
-    public function setCPF ($cpf)
+    public function setCPF($cpf)
     {
         if ($this->isValidCpf($cpf)) {
             $this->cpf = $cpf;
         }
     }
 
-    public function getCPF ()
+    public function getCPF()
     {
         return $this->cpf;
     }
