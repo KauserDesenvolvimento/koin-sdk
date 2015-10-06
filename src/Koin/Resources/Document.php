@@ -2,6 +2,8 @@
 
 namespace Koin\Resources;
 
+use Koin\Validation\BuyerValidation;
+
 class Document
 {
     public $type;
@@ -14,22 +16,35 @@ class Document
 
     public function __construct(array $data = null)
     {
-        if (isset($data['type'])) {
-            $this->setDocumentType($data['type']);
-        }
-
-        if (isset($data['value'])) {
-            $this->setDocumentValue($data['value']);
+        if (isset($data['type']) && isset($data['value'])) {
+            $type = strtoupper($data['type']);
+            if ($type === 'RG') {
+                $this->setRG($data['value']);
+            } elseif ($type === 'CPF') {
+                $this->setCPF($data['value']);
+            }
+        } else {
+            return false;
         }
     }
 
-    public function setDocumentType($type)
+    public function setRG ($rg)
     {
-        $this->type = $type;
+        $this->rg = $rg;
     }
 
-    public function setDocumentValue($value)
+    public function getRG ()
     {
-        $this->value = $value;
+        return $this->rg;
+    }
+
+    public function setCPF ($cpf)
+    {
+        $this->cpf = $cpf;
+    }
+
+    public function getCPF ()
+    {
+        return $this->cpf;
     }
 }
