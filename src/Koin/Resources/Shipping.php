@@ -2,7 +2,7 @@
 
 namespace Koin\Resources;
 
-use Koin\Validation\ShippingValidation;
+use Koin\Parser\ShippingParser;
 
 class Shipping
 {
@@ -22,7 +22,7 @@ class Shipping
     /**
      * @var stClass
      */
-    public $validator;
+    public $parser;
 
     public function __construct(array $data = null)
     {
@@ -74,7 +74,7 @@ class Shipping
             $this->setShippingType($data['shippingType']);
         }
 
-        $this->validator = new ShippingValidation();
+        $this->parser = new ShippingParser();
     }
 
     public function getAddressType()
@@ -144,7 +144,7 @@ class Shipping
 
     public function setCity($city)
     {
-        $city = $this->validator->setCity($city);
+        $city = $this->parser->setCity($city);
 
         if ($city) {
             $this->city = $city;

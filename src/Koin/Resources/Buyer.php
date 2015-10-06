@@ -2,7 +2,7 @@
 
 namespace Koin\Resources;
 
-use Koin\Validation\BuyerValidation;
+use Koin\Parser\BuyerParser;
 
 class Buyer
 {
@@ -21,7 +21,7 @@ class Buyer
     /**
      * @var stClass
      */
-    public $validator;
+    public $parser;
 
     public function __construct(array $data = null)
     {
@@ -69,7 +69,7 @@ class Buyer
             $this->setAddress($data['address']);
         }
 
-        $this->validator = new BuyerValidation();
+        $this->parser = new BuyerParser();
     }
 
     /**
@@ -91,7 +91,7 @@ class Buyer
      */
     public function setName($name)
     {
-        $name = $this->validator->setName($name);
+        $name = $this->parser->setName($name);
 
         if ($name) {
             $this->name = $name;

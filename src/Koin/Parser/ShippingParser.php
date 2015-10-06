@@ -1,10 +1,10 @@
 <?php
 
-namespace Koin\Validation;
+namespace Koin\Parser;
 
 use Koin\Helpers\StringHelper;
 
-class ShippingValidation
+class ShippingParser
 {
     public function __construct()
     {

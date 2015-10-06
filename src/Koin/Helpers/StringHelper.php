@@ -13,4 +13,9 @@ class StringHelper
     {
         return preg_replace('/\s{2,}/', ' ', $string);
     }
+
+    public function getOnlyNumbers($string)
+    {
+        return preg_replace('/\D/', '', $string);
+    }
 }

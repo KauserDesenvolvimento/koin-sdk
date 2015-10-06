@@ -2,7 +2,7 @@
 
 namespace Koin\Resources;
 
-use Koin\Validation\BuyerValidation;
+use Koin\Parser\BuyerParser;
 
 class Document
 {
@@ -12,10 +12,14 @@ class Document
     /**
      * @var stClass
      */
-    public $validator;
+    public $parser;
+    public $helper;
 
     public function __construct(array $data = null)
     {
+        $this->parser = new BuyerParser();
+        $this->helper = new StringHelper();
+
         if (isset($data['type']) && isset($data['value'])) {
             $type = strtoupper($data['type']);
 
@@ -24,8 +28,6 @@ class Document
             } elseif ($type === 'CPF') {
                 $this->setCPF($data['value']);
             }
-
-            $this->validator = new BuyerValidation();
 
             return true;
         } else {
@@ -45,7 +47,15 @@ class Document
 
     public function setCPF($cpf)
     {
-        $this->cpf = $cpf;
+        $cpf = $this->helper->getOnlyNumbers($cpf);
+
+        $cpf_parser = $this->parser->setCpf($cpf);
+
+        if ($cpf_parser) {
+            $this->cpf = $cpf;
+        } else {
+            return false;
+        }
     }
 
     public function getCPF()
