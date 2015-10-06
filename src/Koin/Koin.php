@@ -25,7 +25,12 @@ class Koin
 
     public function __construct()
     {
+        /* date timezone used by API */
         date_default_timezone_set("UTC");
+
+        /**
+         * Autoloader, composer handles with overload
+         */
         set_include_path(get_include_path() . PATH_SEPARATOR . '../src/');
         spl_autoload_extensions('.php');
         spl_autoload_register();
