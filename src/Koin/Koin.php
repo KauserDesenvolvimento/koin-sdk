@@ -129,6 +129,11 @@ class Koin
         return new Buyer();
     }
 
+    public function instanceDocument()
+    {
+        return new Resources\Document();
+    }
+
     public function instanceConfig()
     {
         return new Config();

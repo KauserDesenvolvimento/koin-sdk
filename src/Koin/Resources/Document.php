@@ -6,8 +6,8 @@ use Koin\Parser\BuyerParser;
 
 class Document
 {
-    public $type;
-    public $value;
+    public $cpf;
+    public $rg;
 
     /**
      * @var stClass
@@ -18,20 +18,18 @@ class Document
     public function __construct(array $data = null)
     {
         $this->parser = new BuyerParser();
-        $this->helper = new StringHelper();
+        $this->helper = new \Koin\Helpers\StringHelper();
 
-        if (isset($data['type']) && isset($data['value'])) {
-            $type = strtoupper($data['type']);
+        foreach ($data as $document) {
+            if (isset($document['type']) && isset($document['value'])) {
+                $type = strtoupper($document['type']);
 
-            if ($type === 'RG') {
-                $this->setRG($data['value']);
-            } elseif ($type === 'CPF') {
-                $this->setCPF($data['value']);
+                if ($type === 'RG') {
+                    $this->setRG($document['value']);
+                } elseif ($type === 'CPF') {
+                    $this->setCPF($document['value']);
+                }
             }
-
-            return true;
-        } else {
-            return false;
         }
     }
 
@@ -42,16 +40,21 @@ class Document
 
     public function getRG()
     {
-        return $this->rg;
+        $rg = $this->parser->setRg($rg);
+
+        if ($rg) {
+            $this->rg = $rg;
+        } else {
+            return false;
+        }
     }
 
     public function setCPF($cpf)
     {
-        $cpf = $this->helper->getOnlyNumbers($cpf);
 
-        $cpf_parser = $this->parser->setCpf($cpf);
+        $cpf = $this->parser->setCpf($cpf);
 
-        if ($cpf_parser) {
+        if ($cpf) {
             $this->cpf = $cpf;
         } else {
             return false;

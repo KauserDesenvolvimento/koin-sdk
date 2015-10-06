@@ -18,7 +18,7 @@ class DocumentParser
     public function setCpf($cpf)
     {
         if (is_string($cpf) && $this->isValidCpf($cpf)) {
-            return true;
+            return $this->helper->getOnlyNumbers($cpf);
         }
 
         return false;
@@ -56,5 +56,14 @@ class DocumentParser
             }
         }
         return true;
+    }
+
+    public function setRg($rg)
+    {
+        if (is_string($rg) && strlen($rg) < 20) {
+            return true;
+        }
+
+        return false;
     }
 }
