@@ -19,6 +19,57 @@ class Shipping
     public $deliveryDate;
     public $shippingType;
 
+    public function __construct(array $data = null)
+    {
+        if (isset($data['city'])) {
+            $this->setCity($data['city']);
+        }
+
+        if (isset($data['state'])) {
+            $this->setState($data['state']);
+        }
+
+        if (isset($data['country'])) {
+            $this->setCountry($data['country']);
+        }
+
+        if (isset($data['district'])) {
+            $this->setDistrict($data['district']);
+        }
+
+        if (isset($data['street'])) {
+            $this->setStreet($data['street']);
+        }
+
+        if (isset($data['number'])) {
+            $this->setNumber($data['number']);
+        }
+
+        if (isset($data['complement'])) {
+            $this->setComplement($data['complement']);
+        }
+
+        if (isset($data['zipCode'])) {
+            $this->setZipCode($data['zipCode']);
+        }
+
+        if (isset($data['addressType'])) {
+            $this->setAddressType($data['addressType']);
+        }
+
+        if (isset($data['price'])) {
+            $this->setPrice($data['price']);
+        }
+
+        if (isset($data['deliveryDate'])) {
+            $this->setDeliveryDate($data['deliveryDate']);
+        }
+
+        if (isset($data['shippingType'])) {
+            $this->setShippingType($data['shippingType']);
+        }
+    }
+
     /**
      * Initialize a new instance.
      */
