@@ -31,11 +31,13 @@ class Koin
         /**
          * Autoloader, composer handles with overload
          */
-        set_include_path('../src/');
-        spl_autoload_extensions('.php');
-        spl_autoload_register();
+        spl_autoload_register(array($this, 'autoload'));
     }
 
+    public function autoload($class)
+    {
+        require_once dirname(dirname(__FILE__)) . '/' . str_replace('\\', '/', $class) . '.php';
+    }
     /**
      * Gets the value of buyer.
      *
