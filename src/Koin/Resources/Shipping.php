@@ -3,7 +3,6 @@
 namespace Koin\Resources;
 
 use Koin\Validation\ShippingValidation;
-use stdClass;
 
 class Shipping
 {
@@ -76,14 +75,6 @@ class Shipping
         }
 
         $this->validator = new ShippingValidation();
-    }
-
-    /**
-     * Initialize a new instance.
-     */
-    public function initialize()
-    {
-        $this->data = new stdClass();
     }
 
     public function getAddressType()

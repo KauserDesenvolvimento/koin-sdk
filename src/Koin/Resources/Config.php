@@ -2,8 +2,6 @@
 
 namespace Koin\Resources;
 
-use stdClass;
-
 class Config
 {
     public $currency;
@@ -12,13 +10,6 @@ class Config
     public $increasePercent;
     public $increaseValue;
 
-    /**
-     * Initialize a new instance.
-     */
-    public function initialize()
-    {
-        $this->data = new stdClass();
-    }
 
     /**
      * Gets the value of currency.

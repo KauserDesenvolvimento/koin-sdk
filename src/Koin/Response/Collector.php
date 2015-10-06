@@ -2,8 +2,6 @@
 
 namespace Koin\Exception;
 
-use stdClass;
-
 class Collector
 {
 
@@ -11,14 +9,6 @@ class Collector
      * @var array
      */
     public $errors;
-
-    /**
-     * Initialize a new instance.
-     */
-    public function initialize()
-    {
-        $this->data = new stdClass();
-    }
 
     public function getErrors()
     {

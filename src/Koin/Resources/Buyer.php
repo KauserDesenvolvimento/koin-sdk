@@ -3,7 +3,6 @@
 namespace Koin\Resources;
 
 use Koin\Validation\BuyerValidation;
-use stdClass;
 
 class Buyer
 {
@@ -74,14 +73,6 @@ class Buyer
     }
 
     /**
-     * Initialize a new instance.
-     */
-    public function initialize()
-    {
-        $this->data = new stdClass();
-    }
-
-    /**
      * Gets the value of name.
      *
      * @return mixed
@@ -100,8 +91,14 @@ class Buyer
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $name = $this->validator->setName($name);
 
+        if ($name) {
+            $this->name = $name;
+            return $this;
+        }
+
+        $this->name = "";
         return $this;
     }
 

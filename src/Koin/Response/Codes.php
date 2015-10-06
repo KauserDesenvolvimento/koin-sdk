@@ -2,8 +2,6 @@
 
 namespace Koin\Response;
 
-use stdClass;
-
 class Codes
 {
     /**
@@ -14,14 +12,6 @@ class Codes
     public function __construct()
     {
         $this->setCodes();
-    }
-
-    /**
-     * Initialize a new instance.
-     */
-    public function initialize()
-    {
-        $this->data = new stdClass();
     }
 
     public function setCodes()

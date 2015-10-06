@@ -2,19 +2,9 @@
 
 namespace Koin\Resources;
 
-use stdClass;
-
 class Items
 {
     public $items;
-
-    /**
-     * Initialize a new instance.
-     */
-    public function initialize()
-    {
-        $this->data = new stdClass();
-    }
 
     public function getItems()
     {

@@ -14,4 +14,10 @@ class BuyerValidation
     {
         $this->data = new stdClass();
     }
+
+    public function setName($name)
+    {
+        $name = substr(preg_replace('/\s{2,}/', ' ', $name), 0, 100);
+        return $name;
+    }
 }
