@@ -142,8 +142,6 @@ class Curl
     {
         $this->setTime(time());
 
-        date_default_timezone_set("UTC");
-
         $binaryHash = hash_hmac('sha512', $this->url . $this->getTime(), $this->getSecretKey(), true);
 
         return base64_encode($binaryHash);

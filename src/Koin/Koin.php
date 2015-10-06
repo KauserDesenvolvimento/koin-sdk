@@ -23,6 +23,14 @@ class Koin
     public $IsGift;
     public $order;
 
+    public function __construct()
+    {
+        date_default_timezone_set("UTC");
+        set_include_path(get_include_path() . PATH_SEPARATOR . '../src/');
+        spl_autoload_extensions('.php');
+        spl_autoload_register();
+    }
+
     /**
      * Gets the value of buyer.
      *
