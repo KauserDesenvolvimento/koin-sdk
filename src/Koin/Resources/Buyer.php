@@ -18,6 +18,53 @@ class Buyer
     public $phones;
     public $address;
 
+    public function __construct(array $data = null)
+    {
+        if (isset($data['name'])) {
+            $this->setName($data['name']);
+        }
+
+        if (isset($data['ip'])) {
+            $this->setIp($data['ip']);
+        }
+
+        if (isset($data['isFirstPurchase'])) {
+            $this->setIsFirstPurchase($data['isFirstPurchase']);
+        }
+
+        if (isset($data['isReliable'])) {
+            $this->setIsReliable($data['isReliable']);
+        }
+
+        if (isset($data['buyerType'])) {
+            $this->setBuyerType($data['buyerType']);
+        }
+
+        if (isset($data['email'])) {
+            $this->setEmail($data['email']);
+        }
+
+        if (isset($data['document'])) {
+            $this->setDocument($data['document']);
+        }
+
+        if (isset($data['additionalInfo'])) {
+            $this->setAdditionalInfo($data['additionalInfo']);
+        }
+
+        if (isset($data['birthday'])) {
+            $this->setBirthday($data['birthday']);
+        }
+
+        if (isset($data['phones'])) {
+            $this->setPhones($data['phones']);
+        }
+
+        if (isset($data['address'])) {
+            $this->setAddress($data['address']);
+        }
+    }
+
     /**
      * Initialize a new instance.
      */

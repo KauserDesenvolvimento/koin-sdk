@@ -128,17 +128,17 @@ class Koin
 
     public function instanceCodes()
     {
-        return new Codes($this);
+        return new Codes();
     }
 
     public function instanceBuyer()
     {
-        return new Buyer($this);
+        return new Buyer();
     }
 
     public function instanceConfig()
     {
-        return new Config($this);
+        return new Config();
     }
 
     public function instanceCurl($consumerKey, $secretKey, $environment)
@@ -148,12 +148,12 @@ class Koin
 
     public function instanceItems()
     {
-        return new Items($this);
+        return new Items();
     }
 
     public function instanceShipping()
     {
-        return new shipping($this);
+        return new shipping();
     }
 
     public function mountOrder()

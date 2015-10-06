@@ -7,12 +7,14 @@ use Koin\Koin;
 $koin = new Koin(true);
 
 $buyer = $koin->instanceBuyer();
+
 $buyer->setName("Victor Henrique Ramos");
 $buyer->setIp("127.0.0.1");
 $buyer->setIsFirstPurchase(true);
 $buyer->setIsReliable(true);
 $buyer->setBuyerType(1);
 $buyer->setEmail("victor@wbuzz.com.br");
+
 $buyer->setDocument(array(
     array(
         "key"   => "CPF",
