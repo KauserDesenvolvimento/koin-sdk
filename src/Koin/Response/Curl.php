@@ -47,7 +47,7 @@ class Curl
         return self::TERMS;
     }
 
-    public function getTermsAsHTml()
+    public function getTermsAsHtml()
     {
         return file_get_contents(self::TERMS);
     }
