@@ -45,4 +45,7 @@ engines:
 # You can globally exclude files from being analyzed by any engine using the
 # exclude_paths key.
 
-exclude_paths: ["tests/*", "vendor/*"]
+exclude_paths:
+  - "tests/*"
+  - "vendor/*"
+  - "src/Koin/Response/Curl.php"
