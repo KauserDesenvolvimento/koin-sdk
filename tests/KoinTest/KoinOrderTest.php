@@ -100,10 +100,10 @@ class KoinOrderTest extends PHPUnit_Framework_TestCase
 
         $config = $this->koin->instanceConfig();
         $config->setCurrency("BRL");
-	    $config->setDiscountPercent(0);
-	    $config->setDiscountValue(0);
-	    $config->setIncreasePercent(0);
-	    $config->setIncreaseValue(0);
-	    $this->koin->setConfig($config->getConfig());
+        $config->setDiscountPercent(0);
+        $config->setDiscountValue(0);
+        $config->setIncreasePercent(0);
+        $config->setIncreaseValue(0);
+        $this->koin->setConfig($config->getConfig());
     }
 }
