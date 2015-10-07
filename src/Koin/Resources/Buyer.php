@@ -2,7 +2,7 @@
 
 namespace Koin\Resources;
 
-use Koin\Parser\BuyerParser;
+use Koin\Filter\BuyerFilter;
 
 class Buyer
 {
@@ -21,7 +21,7 @@ class Buyer
     /**
      * @var stClass
      */
-    public $parser;
+    public $filter;
 
     public function __construct(array $data = null)
     {
@@ -69,7 +69,7 @@ class Buyer
             $this->setAddress($data['address']);
         }
 
-        $this->parser = new BuyerParser();
+        $this->filter = new BuyerFilter();
     }
 
     /**
@@ -91,7 +91,7 @@ class Buyer
      */
     public function setName($name)
     {
-        $name = $this->parser->setName($name);
+        $name = $this->filter->setName($name);
 
         if ($name) {
             $this->name = $name;

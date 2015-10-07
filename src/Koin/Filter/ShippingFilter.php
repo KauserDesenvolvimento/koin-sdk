@@ -1,10 +1,10 @@
 <?php
 
-namespace Koin\Parser;
+namespace Koin\Filter;
 
 use Koin\Helpers\StringHelper;
 
-class ShippingParser
+class ShippingFilter
 {
     public function __construct()
     {

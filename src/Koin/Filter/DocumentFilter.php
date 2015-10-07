@@ -1,10 +1,8 @@
 <?php
 
-namespace Koin\Parser;
+namespace Koin\Filter;
 
-use Koin\Helpers\StringHelper;
-
-class DocumentParser
+class DocumentFilter
 {
 
     /**
@@ -12,7 +10,7 @@ class DocumentParser
      */
     public function __construct()
     {
-        $this->helper = new StringHelper();
+        $this->helper = new \Koin\Helpers\StringHelper;
     }
 
     public function setCpf($cpf)
@@ -26,7 +24,7 @@ class DocumentParser
 
     public function isValidCpf($cpf)
     {
-        $cpf_numbers = $this->helper->getOnlyNumbers();
+        $cpf_numbers = $this->helper->getOnlyNumbers($cpf);
 
         // Canonicalize input
         $cpf_numbers = sprintf('%011s', preg_replace('{\D}', '', $cpf_numbers));
@@ -61,7 +59,7 @@ class DocumentParser
     public function setRg($rg)
     {
         if (is_string($rg) && strlen($rg) < 20) {
-            return true;
+            return $rg;
         }
 
         return false;

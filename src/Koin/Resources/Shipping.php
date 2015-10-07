@@ -2,7 +2,7 @@
 
 namespace Koin\Resources;
 
-use Koin\Parser\ShippingParser;
+use Koin\Filter\ShippingFilter;
 
 class Shipping
 {
@@ -22,7 +22,7 @@ class Shipping
     /**
      * @var stClass
      */
-    public $parser;
+    public $filter;
 
     public function __construct(array $data = null)
     {
@@ -74,7 +74,7 @@ class Shipping
             $this->setShippingType($data['shippingType']);
         }
 
-        $this->parser = new ShippingParser();
+        $this->filter = new ShippingFilter();
     }
 
     public function getAddressType()
@@ -144,7 +144,7 @@ class Shipping
 
     public function setCity($city)
     {
-        $city = $this->parser->setCity($city);
+        $city = $this->filter->setCity($city);
 
         if ($city) {
             $this->city = $city;

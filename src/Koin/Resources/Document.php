@@ -2,7 +2,7 @@
 
 namespace Koin\Resources;
 
-use Koin\Parser\BuyerParser;
+use Koin\Filter\DocumentFilter;
 
 class Document
 {
@@ -12,12 +12,12 @@ class Document
     /**
      * @var stClass
      */
-    public $parser;
+    public $filter;
     public $helper;
 
-    public function __construct(array $data = null)
+    public function __construct(array $data = array())
     {
-        $this->parser = new BuyerParser();
+        $this->filter = new DocumentFilter();
         $this->helper = new \Koin\Helpers\StringHelper();
 
         foreach ($data as $document) {
@@ -35,13 +35,13 @@ class Document
 
     public function setRG($rg)
     {
+        $rg = $this->filter->setRg($rg);
+
         $this->rg = $rg;
     }
 
     public function getRG()
     {
-        $rg = $this->parser->setRg($rg);
-
         if ($rg) {
             $this->rg = $rg;
         } else {
@@ -52,7 +52,7 @@ class Document
     public function setCPF($cpf)
     {
 
-        $cpf = $this->parser->setCpf($cpf);
+        $cpf = $this->filter->setCpf($cpf);
 
         if ($cpf) {
             $this->cpf = $cpf;
@@ -72,9 +72,14 @@ class Document
 
         if ($this->cpf) {
             $documents['CPF'] = $this->cpf;
+        } else {
+            $documents['CPF'] = false;
         }
+
         if ($this->rg) {
             $documents['RG'] = $this->rg;
+        } else {
+            $documents['RG'] = false;
         }
         return $documents;
     }
