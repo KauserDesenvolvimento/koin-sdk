@@ -3,10 +3,18 @@
 require_once dirname(__FILE__) . '../../vendor/autoload.php';
 
 use Koin\Koin;
+use Koin\Resources\Buyer;
+use Koin\Resources\Config;
+use Koin\Resources\Items;
+use Koin\Resources\Shipping;
+use Koin\Response\Curl;
 
 $koin = new Koin(true);
 
-$buyer = $koin->instanceBuyer();
+/**
+ * or $koin->instanceBuyer()
+ */
+$buyer = new Buyer();
 
 $buyer->setName("Victor Henrique Ramos");
 $buyer->setIp("127.0.0.1");
@@ -47,7 +55,7 @@ $buyer->setAddress(array(
 ));
 $koin->setBuyer($buyer->getBuyer());
 
-$shipping = $koin->instanceShipping();
+$shipping = new Shipping();
 $shipping->setCity("Maringá");
 $shipping->setState("PR");
 $shipping->setCountry("BRA");
@@ -62,7 +70,7 @@ $shipping->setDeliveryDate("2015-12-15 00:00:00");
 $shipping->setShippingType(1);
 $koin->setShipping($shipping->getShipping());
 
-$items    = $koin->instanceItems();
+$items    = new Items();
 $produtos = array(
     array(
         "Reference"   => "Prod1",
@@ -91,7 +99,7 @@ $koin->setRequestDate(date("Y-m-d H:i:s"));
 $koin->setPrice(475.60);
 $koin->setIsGift(false);
 
-$config = $koin->instanceConfig();
+$config = new Config();
 $config->setCurrency("BRL");
 $config->setDiscountPercent(0);
 $config->setDiscountValue(0);
@@ -99,7 +107,7 @@ $config->setIncreasePercent(0);
 $config->setIncreaseValue(0);
 $koin->setConfig($config->getConfig());
 
-$curl = $koin->instanceCurl(
+$curl = new Curl(
     '84C2CBDB8A094706A0DF28A7CE0ED367',
     'D2361E4D906641A0B9A8E31465C07F7A',
     'production'
