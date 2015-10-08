@@ -44,9 +44,10 @@ class Document
     {
         if ($rg) {
             $this->rg = $rg;
-        } else {
-            return false;
+            return true;
         }
+
+        return false;
     }
 
     public function setCPF($cpf)
@@ -56,9 +57,10 @@ class Document
 
         if ($cpf) {
             $this->cpf = $cpf;
-        } else {
-            return false;
+            return true;
         }
+
+        return false;
     }
 
     public function getCPF()
