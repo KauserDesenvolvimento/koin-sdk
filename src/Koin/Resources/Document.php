@@ -70,19 +70,19 @@ class Document
 
     public function getDocuments()
     {
-        $documents = array();
+        $documents = array(
+            'CPF' => false,
+            'RG' => false,
+        );
 
         if ($this->cpf) {
             $documents['CPF'] = $this->cpf;
-        } else {
-            $documents['CPF'] = false;
         }
 
         if ($this->rg) {
             $documents['RG'] = $this->rg;
-        } else {
-            $documents['RG'] = false;
         }
+
         return $documents;
     }
 }
